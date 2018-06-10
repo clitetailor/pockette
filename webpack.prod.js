@@ -31,12 +31,19 @@ const config = {
       },
       {
         test: /\.styl(us)?$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'stylus-loader']
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'stylus-loader'
+        ]
       }
     ]
   },
   resolve: {
-    modules: ['node_modules', path.resolve(__dirname, 'app')],
+    modules: [
+      'node_modules',
+      path.resolve(__dirname, 'app')
+    ],
     extensions: ['.js', '.css', '.styl', '.stylus', '.pug']
   },
   mode: 'production',

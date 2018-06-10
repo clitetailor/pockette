@@ -35,7 +35,10 @@ const config = {
     ]
   },
   resolve: {
-    modules: ['node_modules', path.resolve(__dirname, 'app')],
+    modules: [
+      'node_modules',
+      path.resolve(__dirname, 'app')
+    ],
     extensions: ['.js', '.css', '.styl', 'stylus', '.pug']
   },
   mode: 'development',
