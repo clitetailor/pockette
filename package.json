@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "test": "echo \"Hello World!\""
+    "webdriver": "webdriver-manager start",
+    "test": "protractor protractor.config.js"
   },
   "keywords": [
     "wallet",
@@ -26,12 +27,14 @@
     "mini-css-extract-plugin": "^0.4.0",
     "optimize-css-assets-webpack-plugin": "^4.0.2",
     "parcel-bundler": "^1.8.1",
+    "protractor": "^5.3.2",
     "pug": "^2.0.3",
     "pug-loader": "^2.4.0",
     "style-loader": "^0.21.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "uglifyjs-webpack-plugin": "^1.2.5",
+    "webdriver-manager": "^12.0.6",
     "webpack": "^4.12.0",
     "webpack-command": "^0.2.1",
     "webpack-serve": "^1.0.4"
