@@ -16,7 +16,8 @@
   "author": "clitetailor",
   "license": "MIT",
   "dependencies": {
-    "angular": "^1.6.10"
+    "angular": "^1.7.2",
+    "angular-route": "^1.7.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

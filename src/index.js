@@ -1,2 +1,2 @@
 import './index.styl'
-import './app/app'
+import './app'
