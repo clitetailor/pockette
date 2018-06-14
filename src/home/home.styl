@@ -1,3 +1,38 @@
 home-component
+  display flex
+  flex-direction column
+  height 100%
   h1
     color darkblue
+    border 1px solid black
+    margin 0
+    padding 20px
+  #container
+    display flex
+    height 100%
+    border 1px solid black
+    #sideBar
+      width 20%
+      border 1px solid black
+    #innerContainer
+      width 80%
+      border 1px solid black
+      #tabs
+        width 100%
+        display flex
+        justify-content flex-start
+        border 1px solid black
+        div
+          text-align center
+        :nth-child(1)
+          // display flex
+          flex 1 0 auto
+        :nth-child(2)
+          // display flex
+          flex 1 0 auto
+        :nth-child(3)
+          // display flex
+          flex 1 0 auto
+      ul
+        height 100%
+        border 1px solid black
