@@ -5,33 +5,29 @@ export const HomeComponent = {
   controller: HomeController
 }
 
-export function HomeController($scope, $route) {
+export function HomeController($scope, $route, store) {
   this.$onInit = function () {
     $scope.title = 'Pockette'
-    $scope.balance = 0
-    $scope.addValue = 0
-    $scope.list = []
-    $scope.expenditureName = undefined
-    $scope.expenditureAmount = 0
-    $scope.list=[
-      {
-        name: 'laptop',
-        amount: '$1327'
-      }
-    ]
-
-    $scope.addBalance = function () {
-      $scope.balance += $scope.addValue
-      $scope.addValue = 0
-    }
-    $scope.addExpenditure = function () {
-      if($scope.expenditureName){
-        let newExpenditure = {
-          name: $scope.expenditureName,
-          amount: $scope.expenditureAmount
+    $scope.tab = 'general'
+    $scope.info = {
+      balance: 0,
+      name: 'asdf',
+      list: [
+        {
+          name: 'laptop',
+          amount: 1327,
+          type: 'electronic'
         }
-        $scope.list.push(newExpenditure)
-      }
+      ],
+      items: [
+        'asdfdsaf'
+      ]
+    }
+    store.set('info',$scope.info)
+    store.set('tab',$scope.tab)
+    $scope.info = store.get('info')
+    $scope.tab = function() {
+      return store.get('tab')
     }
   }
 }

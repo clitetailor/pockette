@@ -1,28 +1,12 @@
 h1 {{title}}
 div#container
-    div#sideBar
-        div#wallets
-            ul
-                li(ng-repeat='wallet in wallets')
-                    div {{wallet.name}}
-                    div {{wallet.balance}}
-        div#option option
+    side-bar-component
     div#innerContainer
-        div#tabs
-            div(ng-class='{selected: isSelected(1)}') General 
-            div(ng-class='{selected: isSelected(2)}') Item spent amount
-            div(ng-class='{selected: isSelected(3)}') Monthly spent
-        div#info
-            div#name abdfa
-            div#balance {{balance}}
-        ul
-            li(ng-repeat='expenditure in list')
-                div {{expenditure.name}}
-                div {{expenditure.amount}}
-
-
-        div#necessaryExpenditure(ng-show='false')
-            ul
-                li(ng-repeat='expenditure in list')
+        tabs-component
+        wallet-info-component
+        div#timeLine(ng-switch on='tab()')
+            ul(ng-switch-when="general")
+                li(ng-repeat='expenditure in info.list')
                     div {{expenditure.name}}
                     div {{expenditure.amount}}
+        add-menu-component

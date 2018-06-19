@@ -1,0 +1,20 @@
+div#add(ng-click="toggleMenu()") add
+div#addMenu(ng-show="isShow()")
+    div#addSpent(ng-click="showBar(1)") add spent
+    div#addItem(ng-click="showBar(2)") add item
+    div#addBalance(ng-click="showBar(3)") add balance
+div#spentAddBar(ng-show="isBarShow(1)")
+    form#spent(ng-submit="addSpent()")
+        input#expenditureName(type='text' maxLength='20' ng-model="itemName")
+        input#expenditureItemType(list='item' ng-model='expenditureType')
+        input(class='amount' type='number' ng-model='addValue')
+        button(type='submit') submit
+div#itemAddBar(ng-show="isBarShow(2)")
+    form(ng-submit="addItem()")
+        input#itemName(type='text' ng-model="itemName")
+div#balanceAddBar(ng-show="isBarShow(3)")
+    form(ng-submit="addBalance()")
+        input#amount(type="number" ng-model="addValue")
+    
+datalist#item
+    option(ng-repeat="item in info.items" value='{{item}}')
