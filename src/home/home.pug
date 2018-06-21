@@ -9,4 +9,9 @@ div#container
                 li(ng-repeat='expenditure in info.list')
                     div {{expenditure.name}}
                     div {{expenditure.amount}}
+            div#itemSpent(ng-switch-when="item")
+                canvas(id="pie" class="chart chart-pie" chart-data="data()" chart-labels="labels" chart-options="options" width="500" height="200")
+            div#monthlySpent(ng-switch-when="monthly" ng-init="data = montlyData()")
+                div(ng-repeat="itemData in data")
+                    canvas(id="bar" class="chart chart-bar" chart-data="itemData" chart-labels="series" width="250" height="50")
         add-menu-component

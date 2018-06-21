@@ -7,6 +7,13 @@ export const HomeComponent = {
 
 export function HomeController($scope, $route, store) {
   this.$onInit = function () {
+    $scope.options = {
+      showAllTooltips: true,
+      tooltips: {
+        enabled: true
+      }
+    };
+    $scope.series = ['jan', 'fer', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
     $scope.title = 'Pockette'
     $scope.tab = 'general'
     $scope.info = {
@@ -16,16 +23,31 @@ export function HomeController($scope, $route, store) {
         {
           name: 'laptop',
           amount: 1327,
-          type: 'electronic'
+          type: 'electronic',
+          date: new Date('6-1-2018')
+        },
+        {
+          name: 'laptop',
+          amount: 1327,
+          type: 'abc',
+          date: new Date('5-20-2018')
         }
       ],
-      items: [
-        'asdfdsaf'
-      ]
+        items: [
+          'electronic',
+          'abc'
+        ]
     }
     store.set('info',$scope.info)
     store.set('tab',$scope.tab)
     $scope.info = store.get('info')
+    $scope.labels = $scope.info.items
+    $scope.data = function() {
+      return store.get('chartData')
+    }
+    $scope.montlyData = function() {
+      return store.get('monthlyData')
+    }
     $scope.tab = function() {
       return store.get('tab')
     }

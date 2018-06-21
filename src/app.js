@@ -1,9 +1,11 @@
 import * as angular from 'angular'
 import 'angular-route'
+import 'angular-chart.js'
+import 'chart.js';
 
 import { GettingStartedComponent } from './getting-started/getting-started'
 import { HomeComponent } from './home/home'
-import {SideBarComponent} from './home/sideBar/sideBar'
+import { SideBarComponent } from './home/sideBar/sideBar'
 import { TabsComponent } from './home/tabs/tabs'
 import { WalletInfoComponent } from './home/walletInfo/walletInfo'
 import { AddMenuComponent } from './home/addMenu/AddMenu'
@@ -11,7 +13,7 @@ import { AddMenuComponent } from './home/addMenu/AddMenu'
 import { StoreService } from './store'
 
 angular
-  .module('pockette', ['ngRoute'])
+  .module('pockette', ['ngRoute','chart.js'])
   .component('homeComponent', HomeComponent)
   .component('sideBarComponent',SideBarComponent)
   .component('tabsComponent',TabsComponent)

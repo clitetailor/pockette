@@ -7,6 +7,8 @@ export const AddMenuComponent = {
 
 export function AddMenuController($scope, $route, store) {
     this.$onInit = function () {
+        let controller = this
+
         $scope.showAddMenu = false
         $scope.barNumber = 0
         $scope.addValue = undefined
@@ -14,18 +16,23 @@ export function AddMenuController($scope, $route, store) {
         $scope.expenditureType = undefined
         $scope.info = store.get('info')
 
+        this.calculateItemSpent()
+        this.calculateMonthlySpent()
         $scope.addSpent = function () {
-            if($scope.itemName){
+            if ($scope.itemName) {
                 let newExpenditure = {
                     name: $scope.itemName,
                     amount: $scope.addValue,
-                    type: $scope.expenditureType
+                    type: $scope.expenditureType,
+                    date: new Date()
                 }
                 $scope.info.list.push(newExpenditure)
                 store.set('info', $scope.info)
                 $scope.itemName = undefined
                 $scope.expenditureType = undefined
                 $scope.addValue = undefined
+                controller.calculateItemSpent()
+                controller.calculateMonthlySpent()
             }
         }
 
@@ -62,4 +69,48 @@ export function AddMenuController($scope, $route, store) {
             return $scope.barNumber === number
         }
     }
+    this.calculateItemSpent = function () {
+        let data = new Array($scope.info.items.length)
+        let month = new Date().getMonth()
+        let year = new Date().getFullYear()
+        for (let i = 0; i < $scope.info.items.length; ++i) {
+            let item = $scope.info.items[i]
+            for (let spent of $scope.info.list) {
+                if (spent.type === item && spent.date.getMonth() === month && spent.date.getFullYear() === year) {
+                    if (!data[i]) {
+                        data[i] = spent.amount
+                    } else {
+                        data[i] += spent.amount
+                    }
+                }
+            }
+        }
+        store.set('chartData', data)
+    }
+
+    this.calculateMonthlySpent = function () {
+        let data = new Array($scope.info.items.length)
+        let year = new Date().getFullYear()
+        for (let i = 0; i < $scope.info.items.length; ++i) {
+            let item = $scope.info.items[i]
+            data[i] = new Array(12)
+            for (let spent of $scope.info.list) {
+                let month = spent.date.getMonth()
+                if(spent.date.getFullYear() === year && spent.type === item){
+                    if (!data[i][month]) {
+                        data[i][month] = spent.amount
+                    } else {
+                        data[i][month] += spent.amount
+                    }
+                }
+            }
+            for (let j = 0; j < 12; ++j) {
+                if (!data[i][j]) {
+                    data[i][j] = 0
+                }
+            }
+        }
+        store.set('monthlyData', data)
+    }
+
 }
