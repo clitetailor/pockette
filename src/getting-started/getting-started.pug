@@ -2,7 +2,8 @@ ul.items
   li.item(ng-repeat="item in items", toggle="true")
     | {{item}}
 
-div
-  input(type="text", ng-model="itemInput", ng-keydown="handleInput($event)")
-  button(ng-click="add()") Add
-  button(ng-click="next()") Next
+md-content
+  md-input-container
+    input(type="text", ng-model="itemInput", ng-keydown="handleInput($event)")
+  md-button.md-raised.md-primary(ng-click="add()") Add
+  md-button.md-raised.md-primary(ng-click="next()") Next
