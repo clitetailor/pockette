@@ -5,9 +5,14 @@ export const GettingStartedComponent = {
   controller: GettingStartedController
 }
 
-export function GettingStartedController($scope, $location) {
+export function GettingStartedController(
+  $scope,
+  $location,
+  items,
+  startApp
+) {
   this.$onInit = function() {
-    $scope.items = [
+    const initialItems = [
       'Water and Electricity',
       'Drink',
       'Food',
@@ -16,32 +21,40 @@ export function GettingStartedController($scope, $location) {
       'Household and Furniture'
     ]
 
-    $scope.itemInput = ''
+    for (let item of initialItems) {
+      items.add(item)
+    }
+
+    $scope.newItem = ''
   }
 
-  $scope.addItem = function (item) {
-    if (item) {
-      $scope.items.push(item)
+  $scope.addItem = function(item) {
+    if (item && !items.has(item)) {
+      items.add(item)
       return true
     }
     return false
   }
 
-  $scope.add = function () {
-    if ($scope.addItem($scope.itemInput)) {
-      $scope.itemInput = ''
+  $scope.listItems = function() {
+    return items.list()
+  }
+
+  $scope.add = function() {
+    if ($scope.addItem($scope.newItem)) {
+      $scope.newItem = ''
     }
   }
 
-  $scope.handleInput = function ($event) {
+  $scope.handleInput = function($event) {
     if ($event.keyCode === 13) {
       $scope.add()
     }
   }
 
-  $scope.next = function () {
-    localStorage.setItem('items', JSON.stringify($scope.items))
-    localStorage.setItem('getting-started', 'true')
+  $scope.next = function() {
+    items.save()
+    startApp.setDone()
     $location.path('/')
   }
 }

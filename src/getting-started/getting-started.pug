@@ -1,9 +1,11 @@
 ul.items
-  li.item(ng-repeat="item in items", toggle="true")
+  li.item(ng-repeat="item in listItems() track by $index", toggle="true")
     | {{item}}
 
-md-content
-  md-input-container
-    input(type="text", ng-model="itemInput", ng-keydown="handleInput($event)")
+div(layout="row", layout-align="space-around center")
+  p-input(
+    p-label="New Item Here!", p-model="newItem",
+    p-keydown="handleInput($event)", flex-gt)
   md-button.md-raised.md-primary(ng-click="add()") Add
-  md-button.md-raised.md-primary(ng-click="next()") Next
+
+p-fab(p-click="next()", p-icon="icon-home")

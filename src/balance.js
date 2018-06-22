@@ -1,5 +1,12 @@
-export function BalanceService() {
+export function BalanceService(store) {
   let balance = 0
+
+  function load() {
+    const data = store.get('balance')
+    if (data) {
+      balance = data
+    }
+  }
 
   function increase(amount) {
     balance += amount
@@ -13,8 +20,14 @@ export function BalanceService() {
     return false
   }
 
+  function value() {
+    return balance
+  }
+
   return {
     increase,
-    decrease
+    decrease,
+    load,
+    value
   }
 }

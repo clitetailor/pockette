@@ -10,7 +10,8 @@ const config = {
   entry: path.resolve(__dirname, 'src/index.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js'
+    filename: 'index.js',
+    publicPath: '/'
   },
   context: __dirname,
   devtool: 'source-map',
@@ -31,6 +32,10 @@ const config = {
       {
         test: /\.styl(us)?$/,
         use: ['style-loader', 'css-loader', 'stylus-loader']
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        use: 'url-loader?limit=100000'
       }
     ]
   },
@@ -39,7 +44,18 @@ const config = {
       'node_modules',
       path.resolve(__dirname, 'app')
     ],
-    extensions: ['.js', '.css', '.styl', 'stylus', '.pug']
+    extensions: [
+      '.js',
+      '.css',
+      '.styl',
+      '.stylus',
+      '.pug',
+      '.oet',
+      '.svg',
+      '.tff',
+      '.woff',
+      '.woff2'
+    ]
   },
   mode: 'development',
   optimization: {

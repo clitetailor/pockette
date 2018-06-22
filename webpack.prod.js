@@ -36,6 +36,10 @@ const config = {
           'css-loader',
           'stylus-loader'
         ]
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        use: 'url-loader?limit=100000'
       }
     ]
   },
@@ -44,7 +48,18 @@ const config = {
       'node_modules',
       path.resolve(__dirname, 'app')
     ],
-    extensions: ['.js', '.css', '.styl', '.stylus', '.pug']
+    extensions: [
+      '.js',
+      '.css',
+      '.styl',
+      '.stylus',
+      '.pug',
+      '.oet',
+      '.svg',
+      '.tff',
+      '.woff',
+      '.woff2'
+    ]
   },
   mode: 'production',
   optimization: {
