@@ -1,10 +1,13 @@
-Pockette
-========
+# Pockette
 
-Getting Started
----------------
+## Prerequisites
+
+- NodeJS
+- pnpm
+
+## Getting Started
 
 ```bash
-$ npm i
-$ npm start
+pnpm i
+pnpm dev
 ```
