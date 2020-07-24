@@ -37,7 +37,11 @@
     "baseUrl": "./",
     // "paths": {},
     // "rootDirs": [],
-    "typeRoots": ["./types", "node_modules/@types"],
+    "typeRoots": [
+      "./types",
+      "node_modules/@types",
+      "@types/jest-environment-puppeteer"
+    ],
     // "types": [],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

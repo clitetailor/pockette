@@ -8,14 +8,14 @@
   setupI18n()
 
   let props: any = {
-    component: Home,
+    component: Home
   }
 
   let test = false
 
   page('/', () => {
     props = {
-      component: Home,
+      component: Home
     }
   })
 
