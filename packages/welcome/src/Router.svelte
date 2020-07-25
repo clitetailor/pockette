@@ -2,20 +2,18 @@
   import page from 'page'
   import { onMount, onDestroy } from 'svelte'
 
-  import Home from './pages/index/Home.svelte'
+  import GettingStarted from './pages/getting-started/GettingStarted/GettingStarted.svelte'
   import { setupI18n } from './i18n/index'
 
   setupI18n()
 
   let props: any = {
-    component: Home
+    component: GettingStarted
   }
-
-  let test = false
 
   page('/', () => {
     props = {
-      component: Home
+      component: GettingStarted
     }
   })
 

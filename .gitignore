@@ -1,6 +1,3 @@
 node_modules/
 
-dist/**
-!dist/favicon.png
-!dist/global.css
-!dist/index.html
+dist/*/**
