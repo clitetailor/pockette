@@ -7,6 +7,7 @@
     "dev": "pnpm build:dev && serve dist",
     "build": "pnpm --filter @pockette/* build",
     "build:dev": "pnpm --filter @pockette/* build:dev",
+    "build:watch": "pnpm --fitler @pockette/* build:watch",
     "format": "pnpm --filter @pockette/* format",
     "test": "pnpm --filter @pockette/* test",
     "e2e": "pnpm --filter @pockette/* e2e"
