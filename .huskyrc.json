@@ -1,5 +1,6 @@
 {
   "hooks": {
-    "pre-commit": "pnpm test && pnpm e2e && pnpm format"
+    "pre-commit": "pnpm format",
+    "pre-push": "pnpm test"
   }
 }
