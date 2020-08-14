@@ -1,5 +1,6 @@
 <script lang="typescript">
   import { fade } from 'svelte/transition'
+  import { _ } from 'svelte-i18n'
 </script>
 
 <style lang="scss">
@@ -20,5 +21,5 @@
 </style>
 
 <div class="Welcome" out:fade>
-  <h1 class="Welcome__title">Pockette</h1>
+  <h1 class="Welcome__title text-3xl">{$_('welcome.title')}</h1>
 </div>

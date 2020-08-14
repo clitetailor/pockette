@@ -9,7 +9,6 @@
 
   onMount(async () => {
     ;(window as any).pages = {}
-    ;(window as any).shared = {}
 
     await Promise.all([
       (window as any).System.import('/welcome/bundle.js')

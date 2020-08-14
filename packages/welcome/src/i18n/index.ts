@@ -4,7 +4,12 @@ import {
   addMessages,
 } from 'svelte-i18n'
 
-import en from './en'
+
+const translations = ['getting-started', 'welcome']
+
+const en = translations
+  .map(mod => ({[mod]: require(`./pages/${mod}.en.json`)}))
+  .reduce((accum, data) => ({...accum,...data}))
 
 export function setupI18n() {
   addMessages('en', en)
